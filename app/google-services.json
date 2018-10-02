@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "127065907880",
+    "firebase_url": "https://admissiondeadline.firebaseio.com",
+    "project_id": "admissiondeadline",
+    "storage_bucket": "admissiondeadline.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127065907880:android:c9e754dd04e9e956",
+        "android_client_info": {
+          "package_name": "com.github.fahimfarhan.admissiondeadline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127065907880-omfo4pg0jag304uojrc97p8p301bqrfn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.github.fahimfarhan.admissiondeadline",
+            "certificate_hash": "ef04a20910a16e9d141d1694f82d8212bd66d64f"
+          }
+        },
+        {
+          "client_id": "127065907880-5nk1isfoql73h2q20ac46kv6p98ntsmn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAanAaaQQpvxprzt4zyd4TakKO2EJulhAM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127065907880-5nk1isfoql73h2q20ac46kv6p98ntsmn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

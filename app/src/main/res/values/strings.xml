@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AdmissionDeadline</string>
+    <string name="title_activity_signup">signup</string>
+    <string name="title_activity_signin">signin</string>
 </resources>
