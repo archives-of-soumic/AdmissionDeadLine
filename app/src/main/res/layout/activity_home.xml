@@ -32,12 +32,49 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content"
+        android:text="Varsity List" />
     <LinearLayout
+        android:id="@+id/linear"
+        android:layout_marginTop="70dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
+
     </LinearLayout>
+
+    <!--
+    <Button
+            android:id="@+id/mist"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:text="MIST"
+            android:layout_margin="70dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/DU"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:text="DU"
+            android:layout_margin="70dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+    -->
 
     <Button
         android:id="@+id/logout"
@@ -46,5 +83,7 @@
         android:text="Sign Out"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="bottom|center" />
+
+
 
 </android.support.design.widget.CoordinatorLayout>
