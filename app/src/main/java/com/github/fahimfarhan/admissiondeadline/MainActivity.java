@@ -1,6 +1,7 @@
 package com.github.fahimfarhan.admissiondeadline;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +10,20 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnSignIn, btnSignUp;
+    SharedPreferences SM;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SM = getSharedPreferences("userrecord", 0);
+        Boolean islogin = SM.getBoolean("userlogin", false);
+        if(islogin){
+            Intent intent = new Intent(MainActivity.this, Home.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
 
         btnSignIn = (Button) findViewById(R.id.gotosignin);
         btnSignUp = (Button) findViewById(R.id.gotosignup);
