@@ -1,2 +1,2 @@
-# recommended-community-standards
-This is how every repo should look like :)
+# ADMISSION DEAD LINE
+nothing serious. just learning android...
