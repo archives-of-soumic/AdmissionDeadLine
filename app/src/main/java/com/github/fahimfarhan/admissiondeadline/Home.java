@@ -82,6 +82,7 @@ public class Home extends AppCompatActivity {
                 public void onClick(View view) {
                     // display circular
                     String key = varsity[view.getId()];
+                    Models.exam = key;
                     Models.site = (String)mp.get(key);
                     Intent intent = new Intent(Home.this, browser.class);
                     startActivity(intent);

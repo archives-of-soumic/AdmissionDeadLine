@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class signin extends AppCompatActivity {
 
@@ -83,7 +84,7 @@ public class signin extends AppCompatActivity {
     }
 
     private void signInFireBase(){
-        String email = inputEmail.getText().toString();
+        final String email = inputEmail.getText().toString();
         final String password = inputPassword.getText().toString();
 
         if (TextUtils.isEmpty(email)) {
@@ -116,6 +117,10 @@ public class signin extends AppCompatActivity {
                                 Toast.makeText(signin.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                             }
                         } else {
+                            Models.email = email;
+                            Models.user = auth.getCurrentUser();
+                            Models.auth = auth;
+                            Models.databaseReference = FirebaseDatabase.getInstance().getReference();
                             Intent intent = new Intent(signin.this, Home.class);
                             startActivity(intent);
                             finish();
