@@ -34,5 +34,6 @@
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
     <string name="title_activity_home">Home</string>
     <string name="title_activity_browser">browser</string>
+    <string name="title_activity_list_view">ListView</string>
 
 </resources>

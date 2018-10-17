@@ -21,13 +21,16 @@ public class Home extends AppCompatActivity {
     LinearLayout linear;
     View.OnClickListener btnClicked;
     String[] varsity;
+    Button viewAllBtn;
+
     Map mp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        varsity = new String[]{"CUET", "BUET",  "KUET","CU", "SUST", "JU"};
+        varsity = new String[]{"CUET", "BUET",  "KUET","CU", "SUST", "JU",
+        "du","ru","ku","mu","su","lu","pu"};
         num = 6;
         btnWord = new Button[num];
         buttonBuilder();
@@ -40,6 +43,14 @@ public class Home extends AppCompatActivity {
         mp.put("SUST", "http://readingbd.com/sust-admission-circular/");
         mp.put("JU", "https://readingbd.com/jahangirnagar-university-admission-notice/");
 
+        mp.put("du", "https://readingbd.com/jahangirnagar-university-admission-notice/");
+        mp.put("ru", "https://readingbd.com/jahangirnagar-university-admission-notice/");
+        mp.put("ku", "https://readingbd.com/jahangirnagar-university-admission-notice/");
+        mp.put("mu", "https://readingbd.com/jahangirnagar-university-admission-notice/");
+        mp.put("su", "https://readingbd.com/jahangirnagar-university-admission-notice/");
+        mp.put("lu", "https://readingbd.com/jahangirnagar-university-admission-notice/");
+        mp.put("pu", "https://readingbd.com/jahangirnagar-university-admission-notice/");
+
 
 
         Button logout = (Button) findViewById(R.id.logout);
@@ -49,18 +60,17 @@ public class Home extends AppCompatActivity {
                 signOut();
             }
         });
-        /*
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        viewAllBtn = findViewById(R.id.lvbutton);
+        viewAllBtn.setOnClickListener(new View.OnClickListener(){
+
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, ListView.class);
+                startActivity(intent);
+                finish();
             }
-        });  */
+        });
     }
 
     private void buttonBuilder() {

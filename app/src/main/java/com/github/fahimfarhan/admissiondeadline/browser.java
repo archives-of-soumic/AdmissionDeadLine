@@ -2,6 +2,7 @@ package com.github.fahimfarhan.admissiondeadline;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import java.io.FileOutputStream;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -56,11 +58,29 @@ public class browser extends AppCompatActivity {
 
     }
 
+    private void saveOnLocalDevice(){
+        String filename = "farcry4.csv";
+        String fileContents = deadlineInfo.exam+";"+deadlineInfo.date.toString()+"\n";
+        FileOutputStream outputStream;
+
+        try {
+            outputStream = openFileOutput(filename, Context.MODE_APPEND);
+
+            outputStream.write(fileContents.getBytes());
+            outputStream.close();
+            Toast.makeText(browser.this, "New Deadline added! :D ", Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(browser.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+        }
+
+    }
+
     static final int DATE_DIALOG_ID = 999;
 
     //private WebView webView;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browser);
 
@@ -95,7 +115,8 @@ public class browser extends AppCompatActivity {
 
                 getAllInfo();
                 setDeadLine();
-                createDeadLineAndSaveInfo();
+                //createDeadLineAndSaveInfo();
+                saveOnLocalDevice();
 
                 Intent intent = new Intent(browser.this, Home.class);
                 startActivity(intent);
