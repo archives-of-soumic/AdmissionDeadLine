@@ -2,12 +2,10 @@ package com.github.fahimfarhan.admissiondeadline;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.TextView;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,17 +17,18 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ListView extends AppCompatActivity {
+public class MyListView extends AppCompatActivity {
 
-    private ArrayList<DeadlineInfo> arrayList;
-
+    private ArrayList<String> arrayList;
+    private ListView list;
+    private ArrayAdapter adapter;
     private void getAllDataFromDB(){
         Models.databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot data: dataSnapshot.getChildren()){
                     DeadlineInfo value = data.getValue(DeadlineInfo.class);
-                    arrayList.add(value);
+                    //arrayList.add(value);
                 }
             }
 
@@ -45,8 +44,19 @@ public class ListView extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_list_view);
 
+            list =  findViewById(R.id.list);
+            arrayList = new ArrayList<String>();
+
+            // Adapter: You need three parameters 'the context, id of the layout (it will be where the data is shown),
+            // and the array that contains the data
+            adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
             readLocalData();
-            //ListView lv = findViewById(R.id.lv123);// (ListView) findViewById(R.id.lv123);
+            // Here, you set the data in your MyListView
+            list.setAdapter(adapter);
+
+
+
+            //MyListView lv = findViewById(R.id.lv123);// (MyListView) findViewById(R.id.lv123);
 
             /**
             arrayList = new ArrayList<DeadlineInfo>();
@@ -91,6 +101,18 @@ public class ListView extends AppCompatActivity {
         String content = scanner.next();
         scanner.close();
         Toast.makeText(this, content, Toast.LENGTH_LONG).show();
+
+        //String sss="";
+        arrayList.add("\n");arrayList.add("\n");arrayList.add("\n");
+        String[] allLine = content.split("\n");
+        for(String s:allLine){
+            arrayList.add(s);
+            //sss+=s;
+        }
+
+        //arrayList.add(sss);
+
+
     }
 
 }
