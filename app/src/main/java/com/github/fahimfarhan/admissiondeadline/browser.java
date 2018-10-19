@@ -1,13 +1,18 @@
 package com.github.fahimfarhan.admissiondeadline;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -76,6 +81,30 @@ public class browser extends AppCompatActivity {
 
     }
 
+
+    private void createAlarm(){
+        Intent myIntent = new Intent(this , MyListView.class);  // NotifyService.class
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        PendingIntent pendingIntent = PendingIntent.getService(this, 0, myIntent, 0);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MINUTE, 48);
+        calendar.set(Calendar.HOUR, 16);
+        //calendar.set(Calendar.AM_PM, Calendar.AM);
+        //calendar.add(Calendar.DAY_OF_MONTH, 1);
+
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000*60*60*24 , pendingIntent);
+    }
+    private void createNotification(){
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.notification_icon)
+                .setContentTitle("Title")
+                .setContentText("textContent")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+    }
+
     static final int DATE_DIALOG_ID = 999;
 
     //private WebView webView;
@@ -117,6 +146,9 @@ public class browser extends AppCompatActivity {
                 setDeadLine();
                 //createDeadLineAndSaveInfo();
                 saveOnLocalDevice();
+
+                createAlarm();
+                createNotification();
 
                 Intent intent = new Intent(browser.this, Home.class);
                 startActivity(intent);
